@@ -18,7 +18,7 @@ const AppRouter = () => {
         <Route path="/" element={<Login />} />
         <Route path="register" element={<Register />} />
         <Route
-          path="https://github.com/ozkankomu/stock"
+          path="https://ozkankomu.github.io/stock/"
           element={<PrivateRouter />}
         >
           <Route path="" element={<Dashboard />}>
