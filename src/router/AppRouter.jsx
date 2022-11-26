@@ -17,10 +17,7 @@ const AppRouter = () => {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="register" element={<Register />} />
-        <Route
-          path="https://ozkankomu.github.io/stock/"
-          element={<PrivateRouter />}
-        >
+        <Route path="stock" element={<PrivateRouter />}>
           <Route path="" element={<Dashboard />}>
             <Route index element={<Home />} />
             <Route path="purchases" element={<Purchases />} />
