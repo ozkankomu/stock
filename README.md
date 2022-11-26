@@ -2,8 +2,7 @@
 <a href="https://www.linkedin.com/in/ozkankomu/" target="_blank"><img src="photo1.png" alt="screenshot" target=_blanked></a>
 </p>
 
-
-Recipe App
+●	Stock App
 ## Table of contents
 
   - [The challenge](#the-challenge)
@@ -17,13 +16,13 @@ Recipe App
 
 
 ## The challenge
-Project aims to create a Recipe App  with React.JS/Styled-Components.In this project, I tried to use almost all styled-Components features with the intention of teaching each other..
+The aim of this project is to keep the product sales quantities and stock statuses in its own API and present it to the user in a professional manner. In other words, it is a kind of stock and profit control application. During the development of the project, libraries such as React.Js, Redux, MUI, Redux_Persist, Yup, Formik, React-Toastify were used.
 
 
 ## Project Skeleton
 
 ```
-Recipe App (folder)
+●	Stock App
 |
 |----readme.md       
 SOLUTION
