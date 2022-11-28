@@ -1,8 +1,6 @@
 import * as React from "react";
-import PropTypes from "prop-types";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import Divider from "@mui/material/Divider";
 import Drawer from "@mui/material/Drawer";
@@ -12,17 +10,16 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import MenuListItems from "../components/MenuListItems";
 import { blueGrey } from "@mui/material/colors";
-import useAuthCalls from "../hooks/useAuthCalls";
 import { useSelector } from "react-redux";
+import useAuthCalls from "../hooks/useAuthCalls";
+import { Button } from "@mui/material";
 import { Outlet } from "react-router-dom";
-import { Container } from "@mui/material";
 
-const drawerWidth = 200;
+const drawerWidth = 240;
 
 function Dashboard(props) {
   const { currentUser } = useSelector((state) => state.auth);
   const { logout } = useAuthCalls();
-
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
@@ -61,7 +58,7 @@ function Dashboard(props) {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1 }}>
+          <Typography variant="h6" noWrap component="div" flexGrow={1}>
             Stock App
           </Typography>
           {currentUser && (
@@ -92,11 +89,7 @@ function Dashboard(props) {
               width: drawerWidth,
             },
           }}
-          PaperProps={{
-            sx: {
-              backgroundColor: blueGrey[900],
-            },
-          }}
+          PaperProps={{ sx: { backgroundColor: blueGrey[900] } }}
         >
           {drawer}
         </Drawer>
@@ -119,7 +112,7 @@ function Dashboard(props) {
           {drawer}
         </Drawer>
       </Box>
-      <Container
+      <Box
         component="main"
         sx={{
           flexGrow: 1,
@@ -129,8 +122,9 @@ function Dashboard(props) {
       >
         <Toolbar />
         <Outlet />
-      </Container>
+      </Box>
     </Box>
   );
 }
+
 export default Dashboard;

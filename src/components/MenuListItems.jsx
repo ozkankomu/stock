@@ -1,15 +1,18 @@
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
+import React from "react";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import InventoryIcon from "@mui/icons-material/Inventory";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import StoreIcon from "@mui/icons-material/Store";
 import StarsIcon from "@mui/icons-material/Stars";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import SupervisorAccountIcon from "@mui/icons-material/SupervisorAccount";
+import {
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+} from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
 const icons = [
@@ -46,17 +49,16 @@ const icons = [
   {
     title: "Admin Panel",
     icon: <SupervisorAccountIcon />,
-    url: "https://10001.fullstack.clarusway.com/admin",
+    url: "https://14189.fullstack.clarusway.com/admin",
   },
 ];
 
 const iconStyle = {
-  color: "#eee",
+  color: "white",
   "& .MuiSvgIcon-root": { color: "#eee" },
   "&:hover": { color: "red" },
   "&:hover .MuiSvgIcon-root": { color: "red" },
 };
-
 const MenuListItems = () => {
   const navigate = useNavigate();
   return (

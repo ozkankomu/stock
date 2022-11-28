@@ -3,7 +3,6 @@ import { useSelector } from "react-redux";
 
 const BASE_URL = "https://14189.fullstack.clarusway.com/";
 
-//* Token'siz api istekleri icin bir instance olustur.
 export const axiosPublic = axios.create({
   baseURL: BASE_URL,
 });
@@ -11,7 +10,6 @@ export const axiosPublic = axios.create({
 const useAxios = () => {
   const { token } = useSelector((state) => state.auth);
 
-  //* Token gerektiren istekler icin bir baska instance olusutur.
   const axiosWithToken = axios.create({
     baseURL: BASE_URL,
     headers: { Authorization: `Token ${token}` },

@@ -1,27 +1,13 @@
-import { Typography } from "@mui/material";
-import { Box } from "@mui/system";
 import { useEffect } from "react";
-import Charts from "../components/Charts";
-import KpiCards from "../components/KpiCards";
 import useStockCalls from "../hooks/useStockCalls";
 
 const Home = () => {
-  const { getSales, getPurchases } = useStockCalls();
-
+  const { getFirms } = useStockCalls();
   useEffect(() => {
-    getSales();
-    getPurchases();
+    getFirms();
   }, []);
 
-  return (
-    <Box>
-      <Typography variant="h4" color="error" mb={4}>
-        Dashboard
-      </Typography>
-      <KpiCards />
-      <Charts />
-    </Box>
-  );
+  return <div>Home</div>;
 };
 
 export default Home;
