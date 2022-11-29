@@ -27,13 +27,11 @@ const Products = () => {
     address: "",
     image: "",
   });
-
   const [toggle, setToggle] = useState({
     brand: false,
     name: false,
     stock: 1,
   });
-
   useEffect(() => {
     getBrands();
     getCategories();
