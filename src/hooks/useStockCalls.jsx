@@ -20,6 +20,9 @@ const useStockCalls = () => {
 
   const getFirms = async () => getStockData("firms");
   const getSales = async () => getStockData("sales");
+  const getCategories = async () => getStockData("categories");
+  const getBrands = async () => getStockData("brands");
+  const getProducts = async () => getStockData("products");
 
   //! ......Delete Calls ----------/////
 
@@ -34,6 +37,8 @@ const useStockCalls = () => {
     }
   };
   const deleteFirm = (id) => deleteStockData("firms", id);
+  const deleteBrand = (id) => deleteStockData("brands", id);
+  const deleteProduct = (id) => deleteStockData("products", id);
 
   //! ------ POST CALLS ----------------//////////
 
@@ -48,6 +53,8 @@ const useStockCalls = () => {
     }
   };
   const postFirm = (info) => postStockData(info, "firms");
+  const postBrand = (info) => postStockData(info, "brands");
+  const postProduct = (info) => postStockData(info, "products");
 
   //! ---------- PUT CALLS -------- ///////////
   const putStockData = async (info, url) => {
@@ -61,8 +68,26 @@ const useStockCalls = () => {
     }
   };
   const putFirm = (info) => putStockData(info, "firms");
+  const putBrand = (info) => putStockData(info, "brands");
 
-  return { getFirms, getSales, deleteFirm, postFirm, postStockData, putFirm };
+  return {
+    getStockData,
+    getFirms,
+    getSales,
+    getCategories,
+    getProducts,
+    getBrands,
+    deleteFirm,
+    deleteBrand,
+    deleteProduct,
+    postFirm,
+    postStockData,
+    postBrand,
+    postProduct,
+    putFirm,
+    putStockData,
+    putBrand,
+  };
 };
 
 export default useStockCalls;

@@ -8,7 +8,7 @@ import FirmModal from "../components/modal/FirmModal";
 import useStockCalls from "../hooks/useStockCalls";
 
 const Firms = () => {
-  const { getFirms } = useStockCalls();
+  const { getBrands, getCategories, getProducts } = useStockCalls();
   const { firms } = useSelector((state) => state.stock);
   const [open, setOpen] = useState(false);
   const [info, setInfo] = useState({
@@ -19,7 +19,9 @@ const Firms = () => {
   });
 
   useEffect(() => {
-    getFirms();
+    getBrands();
+    getCategories();
+    getProducts();
   }, []);
 
   return (
@@ -30,12 +32,12 @@ const Firms = () => {
       <Button variant="contained" onClick={() => setOpen(true)}>
         New Product
       </Button>
-      <ProductModal
+      {/* <ProductModal
         open={open}
         setOpen={setOpen}
         info={info}
         setInfo={setInfo}
-      />
+      /> */}
       {firms?.length > 0 && (
         <Grid container justifyContent="center" mt={3} gap={3}>
           {firms?.map((firm) => (
