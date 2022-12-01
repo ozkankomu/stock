@@ -17,11 +17,23 @@ import { arrowStyle, btnHoverStyle, flexCenter } from "../styles/globalStyle";
 import UpgradeIcon from "@mui/icons-material/Upgrade";
 import VerticalAlignBottomIcon from "@mui/icons-material/VerticalAlignBottom";
 import useSortColumn from "../hooks/useSortColumn";
+import { MultiSelectBox, MultiSelectBoxItem } from "@tremor/react";
 
 const Products = () => {
-  const { getBrands, getCategories, getProducts } = useStockCalls();
-  const { products } = useSelector((state) => state.stock);
+  const {
+    // getBrands,
+    // getCategories,
+    // getProducts,
+    deleteProduct,
+    getProCatBrands,
+  } = useStockCalls();
+  const { products, brands } = useSelector((state) => state.stock);
   const [open, setOpen] = useState(false);
+  const [selectedBrand, setSelectedBrand] = useState([]);
+  const [selectedProducts, setSelectedProducts] = useState([]);
+  const filteredProducts = products
+    ?.filter((item) => selectedBrand?.includes(item.brand))
+    .map((item) => item.name);
 
   const [info, setInfo] = useState({
     name: "",
@@ -30,9 +42,10 @@ const Products = () => {
     image: "",
   });
   useEffect(() => {
-    getBrands();
-    getCategories();
-    getProducts();
+    // getBrands();
+    // getCategories();
+    // getProducts();
+    getProCatBrands();
   }, []);
 
   const columnObj = {
@@ -43,6 +56,12 @@ const Products = () => {
 
   const { sortedData, handleSort, column } = useSortColumn(products, columnObj);
 
+  const isBrandSelected = (item) =>
+    selectedBrand.includes(item.brand) || selectedBrand.length === 0;
+
+  const isProductSelected = (item) =>
+    selectedProducts.includes(item.name) || selectedProducts.length === 0;
+
   return (
     <Box>
       <Typography variant="h4" color="error">
@@ -51,6 +70,30 @@ const Products = () => {
       <Button variant="contained" onClick={() => setOpen(true)}>
         New Product
       </Button>
+      <Box sx={flexCenter} mt={3}>
+        <MultiSelectBox
+          handleSelect={(value) => setSelectedBrand(value)}
+          placeholder="Select Brand"
+          maxWidth="max-w-xs"
+        >
+          {brands?.map((item) => (
+            <MultiSelectBoxItem
+              key={item.name}
+              value={item.name}
+              text={item.name}
+            />
+          ))}
+        </MultiSelectBox>
+        <MultiSelectBox
+          handleSelect={(item) => setSelectedProducts(item)}
+          placeholder="Select Product"
+          maxWidth="max-w-xs"
+        >
+          {filteredProducts?.map((item) => (
+            <MultiSelectBoxItem key={item} value={item} text={item} />
+          ))}
+        </MultiSelectBox>
+      </Box>
 
       {sortedData?.length > 0 && (
         <TableContainer component={Paper} sx={{ mt: 3 }} elevation={10}>
@@ -84,23 +127,29 @@ const Products = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {sortedData.map((product, index) => (
-                <TableRow
-                  key={product.name}
-                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-                >
-                  <TableCell align="center" component="th" scope="row">
-                    {index + 1}
-                  </TableCell>
-                  <TableCell align="center">{product.category}</TableCell>
-                  <TableCell align="center">{product.brand}</TableCell>
-                  <TableCell align="center">{product.name}</TableCell>
-                  <TableCell align="center">{product.stock}</TableCell>
-                  <TableCell align="center">
-                    <DeleteIcon sx={btnHoverStyle} />
-                  </TableCell>
-                </TableRow>
-              ))}
+              {sortedData
+                ?.filter((item) => isBrandSelected(item))
+                .filter((item) => isProductSelected(item))
+                .map((product, index) => (
+                  <TableRow
+                    key={product.name}
+                    sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                  >
+                    <TableCell align="center" component="th" scope="row">
+                      {index + 1}
+                    </TableCell>
+                    <TableCell align="center">{product.category}</TableCell>
+                    <TableCell align="center">{product.brand}</TableCell>
+                    <TableCell align="center">{product.name}</TableCell>
+                    <TableCell align="center">{product.stock}</TableCell>
+                    <TableCell align="center">
+                      <DeleteIcon
+                        sx={btnHoverStyle}
+                        onClick={() => deleteProduct(product.id)}
+                      />
+                    </TableCell>
+                  </TableRow>
+                ))}
             </TableBody>
           </Table>
         </TableContainer>
