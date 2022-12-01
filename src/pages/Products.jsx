@@ -16,12 +16,13 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import { arrowStyle, btnHoverStyle, flexCenter } from "../styles/globalStyle";
 import UpgradeIcon from "@mui/icons-material/Upgrade";
 import VerticalAlignBottomIcon from "@mui/icons-material/VerticalAlignBottom";
+import useSortColumn from "../hooks/useSortColumn";
 
 const Products = () => {
   const { getBrands, getCategories, getProducts } = useStockCalls();
   const { products } = useSelector((state) => state.stock);
   const [open, setOpen] = useState(false);
-  const [sortedProducts, setSortedProducts] = useState(products);
+
   const [info, setInfo] = useState({
     name: "",
     phone: "",
@@ -34,37 +35,13 @@ const Products = () => {
     getProducts();
   }, []);
 
-  useEffect(() => {
-    setSortedProducts(products);
-  }, [products]);
-
-  const [toggle, setToggle] = useState({
+  const columnObj = {
     brand: 1,
     name: 1,
     stock: 1,
-  });
-
-  const handleSort = (arg, type) => {
-    setToggle({ ...toggle, [arg]: toggle[arg] * -1 });
-
-    setSortedProducts(
-      sortedProducts
-        ?.map((item) => item)
-        .sort((a, b) => {
-          if (type === "date") {
-            return toggle[arg] * (new Date(a[arg]) - new Date(b[arg]));
-          } else if (type === "number") {
-            return toggle[arg] * (a[arg] - b[arg]);
-          } else {
-            if (toggle[arg] === 1) {
-              return b[arg] > a[arg] ? 1 : b[arg] < a[arg] ? -1 : 0;
-            } else {
-              return a[arg] > b[arg] ? 1 : a[arg] < b[arg] ? -1 : 0;
-            }
-          }
-        })
-    );
   };
+
+  const { sortedData, handleSort, column } = useSortColumn(products, columnObj);
 
   return (
     <Box>
@@ -75,7 +52,7 @@ const Products = () => {
         New Product
       </Button>
 
-      {sortedProducts?.length > 0 && (
+      {sortedData?.length > 0 && (
         <TableContainer component={Paper} sx={{ mt: 3 }} elevation={10}>
           <Table sx={{ minWidth: 650 }} aria-label="simple table">
             <TableHead>
@@ -83,31 +60,31 @@ const Products = () => {
                 <TableCell>#</TableCell>
                 <TableCell align="center">Category</TableCell>
                 <TableCell align="center">
-                  <Box sx={arrowStyle}>
+                  <Box sx={arrowStyle} onClick={() => handleSort("brand")}>
                     <div>Brand</div>
-                    {false && <VerticalAlignBottomIcon />}
-                    {true && <UpgradeIcon />}
+                    {column.brand !== 1 && <VerticalAlignBottomIcon />}
+                    {column.brand === 1 && <UpgradeIcon />}
                   </Box>
                 </TableCell>
                 <TableCell align="center">
-                  <Box sx={arrowStyle}>
+                  <Box sx={arrowStyle} onClick={() => handleSort("name")}>
                     <div>Name</div>
-                    {false && <VerticalAlignBottomIcon />}
-                    {true && <UpgradeIcon />}
+                    {column.name !== 1 && <VerticalAlignBottomIcon />}
+                    {column.name === 1 && <UpgradeIcon />}
                   </Box>
                 </TableCell>
                 <TableCell align="center">
                   <Box sx={arrowStyle} onClick={() => handleSort("stock")}>
                     <div>Stock</div>
-                    {toggle.stock !== 1 && <VerticalAlignBottomIcon />}
-                    {toggle.stock === 1 && <UpgradeIcon />}
+                    {column.stock !== 1 && <VerticalAlignBottomIcon />}
+                    {column.stock === 1 && <UpgradeIcon />}
                   </Box>
                 </TableCell>
                 <TableCell align="center">Operation</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {sortedProducts.map((product, index) => (
+              {sortedData.map((product, index) => (
                 <TableRow
                   key={product.name}
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
