@@ -28,6 +28,7 @@ const useStockCalls = () => {
   const getCategories = async () => getStockData("categories");
   const getBrands = async () => getStockData("brands");
   const getProducts = async () => getStockData("products");
+  const getPurchases = async () => getStockData("purchases");
 
   const getProCatBrands = async () => {
     try {
@@ -110,6 +111,7 @@ const useStockCalls = () => {
     putStockData,
     putBrand,
     getProCatBrands,
+    getPurchases,
   };
 };
 
