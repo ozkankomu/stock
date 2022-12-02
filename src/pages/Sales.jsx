@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import useStockCalls from "../hooks/useStockCalls";
 import MultiSelect from "../components/MultiSelect";
-import SaleModal from "../components/modals/SaleModal";
+import SaleModal from "../components/modal/SaleModal";
 import SalesTable from "../components/tables/SalesTable";
 
 const Sales = () => {
