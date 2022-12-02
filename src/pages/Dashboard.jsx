@@ -113,6 +113,7 @@ function Dashboard(props) {
         </Drawer>
       </Box>
       <Box
+        container
         component="main"
         sx={{
           flexGrow: 1,
