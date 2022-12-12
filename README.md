@@ -97,8 +97,6 @@ SOLUTION
 
 
 
-
-
 ## Author
 
 - Author - [Ozkan]
