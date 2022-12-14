@@ -38,16 +38,16 @@ SOLUTION
 │    │             ├── Navbar.js
 │    │             └── style.js
 │    ├── pages
-│    │       ├── about
+│    │       ├──Dashboards
 │    │       │     ├── About.js
 │    │       │     └── style.js
-│    │       ├── details
+│    │       ├── Sales
 │    │       │     ├── Details.js
 │    │       │     └── style.js
-│    │       ├── login
+│    │       ├── Purchases
 │    │       │     ├── Login.js
 │    │       │     └── style.js
-│    │       └── home
+│    │       └── Products
 │    │             ├── Home.js
 │    │             ├── RecipeCard.js
 │    │             └── style.js
