@@ -95,7 +95,6 @@ SOLUTION
 - [MDN](https://developer.mozilla.org/en-US/) - This is an amazing document which helped me finally understand deep sides of web development. I'd recommend it to anyone still learning these concepts.
 
 
-
 ## Author
 
 - Author - [Ozkan Komu]
