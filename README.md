@@ -17,6 +17,7 @@
 The aim of this project is to keep the product sales quantities and stock statuses in its own API and present it to the user in a professional manner. In other words, it is a kind of stock and profit control application. During the development of the project, libraries such as React.Js, Redux, MUI, Redux_Persist, Yup, Formik, React-Toastify were used.
 
 
+
 ## Project Skeleton
 
 ```
