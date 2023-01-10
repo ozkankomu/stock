@@ -19,7 +19,6 @@ The aim of this project is to keep the product sales quantities and stock status
 ## Project Skeleton
 
 ```
-
 ●	Stock App
 |
 |----readme.md       
