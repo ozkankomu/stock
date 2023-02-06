@@ -67,7 +67,6 @@ SOLUTION
 </p>
 
 
-
 ## Links
 <hr>
 <b>Check The Live Website ➡️</b> <a href="https://ozkankomu.github.io/stock/"> Live Website </a> 
