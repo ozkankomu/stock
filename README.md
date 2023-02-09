@@ -82,8 +82,6 @@ SOLUTION
 - `@emotion/react`
 - `@emotion/styled`
 
-
-
 ### Useful resources
 
 - [W3 Schoold](https://www.w3schools.com/) - This helped me for basics of website paradigm. I really liked this pattern and will use it going forward.
