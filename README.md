@@ -66,7 +66,6 @@ SOLUTION
 <a href="https://ozkankomu.github.io/stock/"><img src="screen.gif" alt="screenshot" target=_blanked></a>
 </p>
 
-
 ## Links
 <hr>
 <b>Check The Live Website ➡️</b> <a href="https://ozkankomu.github.io/stock/"> Live Website </a> 
