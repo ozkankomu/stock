@@ -60,7 +60,6 @@ SOLUTION
 ├── package.json
 └── yarn.lock
 ```
-
 ## Screenshot
 <p align="left">
 <a href="https://ozkankomu.github.io/stock/"><img src="screen.gif" alt="screenshot" target=_blanked></a>
